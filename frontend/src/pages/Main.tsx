@@ -6,6 +6,7 @@ import { Web3Provider } from "@ethersproject/providers";
 import { Navigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import AddUserGoods from "../components/AddUserGoods";
+import GoodsRow from "../components/GoodsRow";
 
 interface MainProps {}
 
@@ -40,6 +41,12 @@ const Main: React.FC<MainProps> = (props) => {
     },
     { enabled: !!active }
   );
+
+  React.useEffect(() => {
+    userQuery.refetch();
+    userGoodsQuery.refetch();
+    userCustodyQuery.refetch();
+  }, [account]);
 
   if (!active) return <Navigate to="/" replace />;
   else if (userQuery.data && !userQuery.data.exist)
@@ -80,21 +87,46 @@ const Main: React.FC<MainProps> = (props) => {
           />
         )}
 
-        {userGoodsQuery.isSuccess ? (
-          userGoodsQuery.data?.map((val) => (
-            <Text key={val.toString()}>{val.toString()}</Text>
-          ))
-        ) : (
-          <Text>Loading User Goods...</Text>
-        )}
+        <Heading level="4">User Goods</Heading>
+        <Box pad="small" gap="small">
+          {userGoodsQuery.isSuccess ? (
+            userGoodsQuery.data.length > 0 ? (
+              userGoodsQuery.data.map((val) => (
+                <GoodsRow
+                  key={val.toString()}
+                  contract={trackrContract}
+                  account={account!}
+                  goodsId={val}
+                />
+              ))
+            ) : (
+              <Text>User Goods are Empty</Text>
+            )
+          ) : (
+            <Text>Loading User Goods...</Text>
+          )}
+        </Box>
 
-        {userCustodyQuery.isSuccess ? (
-          userCustodyQuery.data?.map((val) => (
-            <Text key={val.toString()}>{val.toString()}</Text>
-          ))
-        ) : (
-          <Text>Loading User Custody...</Text>
-        )}
+        <Heading level="4">User in Current Custody</Heading>
+        <Box pad="small" gap="small">
+          {userCustodyQuery.isSuccess ? (
+            userCustodyQuery.data.length > 0 ? (
+              userCustodyQuery.data.map((val) => (
+                <GoodsRow
+                  key={val.toString()}
+                  contract={trackrContract}
+                  account={account!}
+                  goodsId={val}
+                  transferable
+                />
+              ))
+            ) : (
+              <Text>User Goods Custody are Empty</Text>
+            )
+          ) : (
+            <Text>Loading User Custody...</Text>
+          )}
+        </Box>
       </Box>
     </Box>
   );
