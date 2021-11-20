@@ -1,0 +1,24 @@
+{
+  "name": "trackr",
+  "version": "1.0.0",
+  "description": "Asset Management in the Chain!",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "export-abi": "node export-abi.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fauh45/trackr.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/fauh45/trackr/issues"
+  },
+  "homepage": "https://github.com/fauh45/trackr#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.3"
+  }
+}

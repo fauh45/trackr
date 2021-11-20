@@ -1,0 +1,5 @@
+# NPM Stuff
+node_modules/
+
+# Private Key
+priv
