@@ -33,6 +33,23 @@ const Landing: React.FC<LandingProps> = (props) => {
           Connect using brower extensions such as Metamask, etc.
         </Text>
       </Box>
+
+      <Box align="center">
+        <Text size="small">
+          This DApps are hosted on Görli Testnet as a demo for{" "}
+          <a href="https://garudahacks.com/" target="_blank" rel="noreferrer">
+            Garudahacks hackathon
+          </a>
+          ,{" "}
+          <a
+            href="https://mudit.blog/getting-started-goerli-testnet/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            follow these steps to setup your Metamask.
+          </a>
+        </Text>
+      </Box>
     </Box>
   );
 };

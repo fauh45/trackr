@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/fauh45/trackr#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.3.3"
+    "@openzeppelin/contracts": "^4.3.3",
+    "@truffle/hdwallet-provider": "^1.7.0"
   }
 }

@@ -137,6 +137,7 @@ contract Trackr is Identity, Ownable {
         inCustody(_goodsId, msg.sender)
         userExist(_to)
     {
+        require(_to != msg.sender, "User moving to itself");
         require(
             !_allGoods[_goodsId].locked,
             "Owner has locked change of custody"

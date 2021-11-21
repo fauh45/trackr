@@ -42,6 +42,7 @@ const Main: React.FC<MainProps> = (props) => {
     { enabled: !!active }
   );
 
+  // eslint-disable-next-line
   React.useEffect(() => {
     userQuery.refetch();
     userGoodsQuery.refetch();
@@ -93,6 +94,7 @@ const Main: React.FC<MainProps> = (props) => {
             userGoodsQuery.data.length > 0 ? (
               userGoodsQuery.data.map((val) => (
                 <GoodsRow
+                  lockable
                   key={val.toString()}
                   contract={trackrContract}
                   account={account!}
@@ -107,7 +109,7 @@ const Main: React.FC<MainProps> = (props) => {
           )}
         </Box>
 
-        <Heading level="4">User in Current Custody</Heading>
+        <Heading level="4">Currently in User Custody</Heading>
         <Box pad="small" gap="small">
           {userCustodyQuery.isSuccess ? (
             userCustodyQuery.data.length > 0 ? (

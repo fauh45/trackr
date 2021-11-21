@@ -22,10 +22,12 @@ const AddUserGoods: React.FC<AddUserGoodsProps> = (props) => {
 
   const addGoodsMutation = useMutation(
     async (goodsParams: { displayName: string; goodsOwner: string }) => {
-      return await props.contract.createGood(
-        goodsParams.displayName,
-        goodsParams.goodsOwner
-      );
+      return await (
+        await props.contract.createGood(
+          goodsParams.displayName,
+          goodsParams.goodsOwner
+        )
+      ).wait();
     },
     {
       onSuccess: async () => {
