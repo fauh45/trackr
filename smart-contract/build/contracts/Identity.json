@@ -7944,7 +7944,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-21T03:47:41.835Z",
+  "updatedAt": "2021-11-21T04:12:12.162Z",
   "devdoc": {
     "author": "Fauzan Lubis (fauh45)",
     "details": "Hold customer and manufacturer identity (address, display name, and type of user)",

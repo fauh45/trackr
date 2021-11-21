@@ -18,10 +18,9 @@
  *
  */
 
-const HDWalletProvider = require('@truffle/hdwallet-provider');
+require("dotenv").config();
 
-const fs = require('fs');
-const privateKey = fs.readFileSync(".priv").toString().trim();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
   /**
@@ -47,8 +46,10 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
     },
     goerli: {
-      provider: () => new HDWalletProvider(privateKey, "http://goerli.prylabs.net/"),
+      provider: () => new HDWalletProvider({ privateKeys: [process.env.PRIVATE_KEY], provider: `https://goerli.infura.io/v3/${process.env.INFURA_PROJECT_ID}` }),
       network_id: "5",
+      gas: 4465030,
+      gasPrice: 10000000000
     }
     // Another network with more advanced options...
     // advanced: {
