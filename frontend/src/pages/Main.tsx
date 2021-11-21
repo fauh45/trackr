@@ -42,12 +42,13 @@ const Main: React.FC<MainProps> = (props) => {
     { enabled: !!active }
   );
 
-  // eslint-disable-next-line
+  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     userQuery.refetch();
     userGoodsQuery.refetch();
     userCustodyQuery.refetch();
   }, [account]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   if (!active) return <Navigate to="/" replace />;
   else if (userQuery.data && !userQuery.data.exist)
