@@ -77,7 +77,7 @@ const Onboarding: React.FC<OnboardingProps> = (props) => {
     },
     {
       onSuccess: async () => {
-        await queryClient.invalidateQueries(["user", account]);
+        await queryClient.resetQueries(["user", account]);
 
         navigate("/", { replace: true });
       },
